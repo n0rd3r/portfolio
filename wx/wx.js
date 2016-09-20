@@ -8,12 +8,16 @@ opt.headers = {};
 opt.headers["User-Agent"] = "norjekudo software llc";
 opt.hostname = 'forecast.weather.gov';
 opt.path = '/MapClick.php?lat=' + lat + '&lon=' + lon + '&FcstType=json';
+var d = new Date();
 http.get(opt, function (response) {
     response.on('data', function(chunk) {
         data += chunk;
     });
     response.on('end', function() {
+        var d2 = new Date();
+        var diff = d2.getTime() - d.getTime();
         var wx = JSON.parse(data);
+        console.log(diff + 'ms');
         console.log(wx.currentobservation.id);
         console.log('DATE: ' + wx.currentobservation.Date);
         console.log('WX: ' + wx.currentobservation.Weather);
