@@ -2,7 +2,11 @@ package norder;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.config.ClientConfig;
+import com.sun.jersey.api.client.config.DefaultClientConfig;
+import com.sun.jersey.api.json.JSONConfiguration;
 import com.sun.jersey.api.client.WebResource;
+
 import java.util.Map;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +17,8 @@ public class App {
 	return "Hello World";
     }
     public static void main(String[] args) {
+        //ClientConfig clientConfig = new DefaultClientConfig();
+        //clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, true);
         Client client = Client.create();
         WebResource webResource = client.resource("http://forecast.weather.gov/MapClick.php?x=233&y=85&site=iln&zmx=&zmy=&map_x=233&map_y=85&&FcstType=json");
         ClientResponse response = webResource.header("User-Agent", "norjekudo software llc").get(ClientResponse.class);
