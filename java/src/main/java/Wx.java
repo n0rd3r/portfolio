@@ -15,7 +15,10 @@ public class Wx {
         sb.append("\n");
         sb.append(this.currentobservation.Temp);
         sb.append("\n");
-        sb.append(this.data.text.get(0));
+        this.data.text.forEach(x -> {
+            sb.append(x);
+            sb.append("\n");
+        });
 
         return sb.toString();
     }

@@ -22,8 +22,9 @@ public class App {
         Map mp = (Map)output.get("currentobservation");
 */
 
-        output.data.text.forEach(x -> System.out.println(x));
-        System.out.println(output.data.text.get(0));
+        //output.data.text.forEach(x -> System.out.println(x));
+        //System.out.println(output.data.text.get(0));
+        System.out.println(output.toString());
     }
 }
 
