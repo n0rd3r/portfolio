@@ -1,31 +1,23 @@
 version = '1.0'
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.1'
+    }
+}
+
+apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'java'
 apply plugin: 'application'
 
+mainClassName = 'norder.App'
 repositories {
     jcenter()
-    mavenCentral()
-}
-
-task fatJar(type: Jar) {
-    manifest {
-        attributes 'Implementation-Title': 'Gradle Jar File Example',
-            'Implementation-Version': version,
-            'Main-Class': 'norder.App'
-    }
-    baseName = project.name + '-all'
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-    with jar
 }
 
 dependencies {
-    compile 'com.sun.jersey:jersey-client:1.19.4'
-    compile 'com.sun.jersey:jersey-json:1.19.4'        
-    compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.9.0'
-    compile 'com.fasterxml.jackson.core:jackson-annotations:2.9.0'
-
+    compile 'org.json:json:20170516'
     testCompile 'junit:junit:4.12'
 }
-
-mainClassName = 'norder.App'
-
